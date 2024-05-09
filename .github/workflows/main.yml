@@ -8,6 +8,11 @@ on:
     branches:
       - main
 
+env:
+  NEWRELIC_ACCOUNT_ID: 4399529
+  NEWRELIC_API_KEY: ${{ secrets.NEWRELIC_API_KEY }}
+  NEWRELIC_REGION: "US"
+
 jobs:
   terraform:
     name: Terraform Actions
@@ -37,5 +42,4 @@ jobs:
           path: ./tfplan
       
       - name: Terraform Apply
-        # if: github.ref == 'refs/heads/main' && github.event_name == 'push' # Only apply on push to main
         run: terraform apply -auto-approve tfplan

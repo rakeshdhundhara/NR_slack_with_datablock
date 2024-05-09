@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 env:
   NEWRELIC_ACCOUNT_ID: 4399529
@@ -39,7 +36,6 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: tfplan
-          path: ./tfplan
       
       - name: Terraform Apply
         run: terraform apply -auto-approve tfplan
